@@ -29,6 +29,7 @@ En este playbook crearemos un contenedor Docker que ejecute una imagen de `nginx
         restart_policy: always
         published_ports:
           - "80:80"
+```
 #### Comando para ejecutar el Playbook
 ```Bash
 
@@ -40,11 +41,11 @@ Verificación (En el cliente)
 docker ps
 Si el contenedor está corriendo, aparecerá en la lista.
 ```
-Ejemplo 2: Detener un contenedor Docker
+### Ejemplo 2: Detener un contenedor Docker
 Este playbook detendrá el contenedor nginx_contenedor.
 
-Archivo: detener_contenedor_nginx.yaml
-YAML
+### Archivo: detener_contenedor_nginx.yaml
+```YAML
 
 - name: Detener el contenedor Docker Nginx
   hosts: localhost  # Reemplazar con el nombre del host o grupo de hosts
@@ -54,21 +55,24 @@ YAML
       community.docker.docker_container:
         name: nginx_contenedor
         state: stopped
-Comando para ejecutar el Playbook
-Bash
+```
+### Comando para ejecutar el Playbook
+```Bash
 
 ansible-playbook detener_contenedor_nginx.yaml
 Verificación (En el cliente)
-Bash
+```
+```Bash
 
 docker ps -a
+```
 El contenedor debería aparecer detenido.
 
-Ejemplo 3: Eliminar un contenedor Docker
+### Ejemplo 3: Eliminar un contenedor Docker
 En este playbook eliminaremos el contenedor nginx_contenedor.
 
 Archivo: eliminar_contenedor_nginx.yaml
-YAML
+```YAML
 
 - name: Eliminar el contenedor Docker Nginx
   hosts: localhost  # Reemplazar con el nombre del host o grupo de hosts
@@ -78,17 +82,19 @@ YAML
       community.docker.docker_container:
         name: nginx_contenedor
         state: absent
-Comando para ejecutar el Playbook
-Bash
+```
+### Comando para ejecutar el Playbook
+```Bash
 
 ansible-playbook eliminar_contenedor_nginx.yaml
 Verificación (En el cliente)
-Bash
+```
+```Bash
 
 docker ps -a
 El contenedor debería haber sido eliminado.
-
-3.- Referencias
+```
+## 3.- Referencias
 Documentación oficial de Ansible sobre el módulo docker_container
 Guía oficial de Ansible
 Repositorio de Ansible Docker Collection
