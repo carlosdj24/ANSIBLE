@@ -94,8 +94,9 @@ Verificación (En el cliente)
 docker ps -a
 El contenedor debería haber sido eliminado.
 ```
-## 3.- Referencias
-Documentación oficial de Ansible sobre el módulo docker_container
-Guía oficial de Ansible
-Repositorio de Ansible Docker Collection
-<!-- end list -->
+## **3.- Referencias**  
+
+- [Documentación oficial de Ansible sobre el módulo `docker_container`](https://docs.ansible.com/ansible/latest/collections/community/docker/docker_container_module.html)
+- [Guía oficial de Ansible](https://docs.ansible.com/)
+- [Repositorio de Ansible Docker Collection](https://github.com/ansible-collections/docker)
+
