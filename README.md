@@ -29,16 +29,17 @@ En este playbook crearemos un contenedor Docker que ejecute una imagen de `nginx
         restart_policy: always
         published_ports:
           - "80:80"
-Comando para ejecutar el Playbook
-Bash
+#### Comando para ejecutar el Playbook
+```Bash
 
 ansible-playbook crear_contenedor_nginx.yaml
 Verificación (En el cliente)
-Bash
+```
+```Bash
 
 docker ps
 Si el contenedor está corriendo, aparecerá en la lista.
-
+```
 Ejemplo 2: Detener un contenedor Docker
 Este playbook detendrá el contenedor nginx_contenedor.
 
