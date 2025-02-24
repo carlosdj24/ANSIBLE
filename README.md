@@ -1,24 +1,35 @@
-# Proyecto Ansible Docker Container
+# ANSIBLE
 
-Este repositorio tiene como objetivo automatizar la gestión de contenedores Docker utilizando Ansible.
+![ansible](/ansible1.png)
 
-## Descripción
+# **Estudio del Módulo `docker_container` en Ansible**  
 
-Este proyecto utiliza el módulo `docker_container` de Ansible para gestionar un contenedor Docker basado en la imagen oficial de `nginx`. El playbook realiza lo siguiente:
+## **1.- Nombre del módulo: `docker_container`**  
 
-1. Asegura que Docker esté instalado en la máquina local.
-2. Inicia un contenedor de Nginx.
-3. Verifica el estado del contenedor y muestra si está en ejecución.
+### **Descripción**  
+El módulo `docker_container` de Ansible se utiliza para gestionar contenedores Docker en un sistema. Permite crear, iniciar, detener, eliminar y configurar contenedores de Docker, facilitando la administración de aplicaciones y servicios que se ejecutan en contenedores. Es muy útil para la automatización de la gestión de contenedores en entornos de servidores y en la integración de Docker en flujos de trabajo de DevOps.
 
-## Requisitos
+---
 
-- Tener Docker instalado en la máquina local.
-- Tener Ansible instalado en tu máquina de control.
+## **2.- Ejemplos de funcionamiento**  
 
-## Cómo ejecutar el playbook
+### **Ejemplo 1: Crear y ejecutar un contenedor Docker con Nginx**  
+En este playbook crearemos y ejecutaremos un contenedor Docker utilizando la imagen `nginx:latest`, exponiendo el puerto 80 del contenedor al puerto 8080 del host.
 
-1. Clona este repositorio:
-
-   ```bash
-   git clone https://github.com/tuusuario/ansible-docker-container.git
-   cd ansible-docker-container
+#### **Archivo:** `crear_contenedor_nginx.yml`
+```yaml
+---
+- name: Crear y ejecutar un contenedor Docker con Nginx
+  hosts: localhost  # Se ejecuta en el host local
+  become: true  # Permite ejecutar el playbook con permisos de superusuario
+  tasks:
+    - name: Crear el contenedor Nginx
+      docker_container:
+        name: nginx_container
+        image: nginx:latest
+        state: started
+        restart_policy: always
+        exposed_ports:
+          - "80"
+        published_ports:
+          - "8080:80"
